@@ -4,7 +4,7 @@ public class Client extends Thread {
 
 	private Restaurant resto;
 	private String etat="WAITING TO ENTER";
-	private int id;
+	private int id=0;
 	
 	
 public Client(Restaurant resto,int id) {
@@ -52,8 +52,18 @@ public void run() {
 		e.printStackTrace();
 	}
 }
-public String getEtat()
-{
-	return etat;
-}
+	public String getEtat()
+	{
+		return etat;
+	}
+
+	public int getIdClient() {
+		
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 }

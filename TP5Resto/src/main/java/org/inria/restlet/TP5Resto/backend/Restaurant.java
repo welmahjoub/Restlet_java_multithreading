@@ -74,7 +74,7 @@ public Client getClient(int id)
 {
 	for (Client client : clients) {
 		
-		if(client.getId()==id)
+		if(client.getIdClient()==id)
 			return client;
 	}
 	return null;
