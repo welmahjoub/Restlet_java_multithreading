@@ -5,33 +5,40 @@ import java.util.concurrent.Semaphore;
 public class StandCuisson {
 
 	private int nbAssiete;
-	private Semaphore sema;
-	
+	private Semaphore semaClient;
+	private Semaphore semaCuisinier;
 	
 	public StandCuisson() {
 		nbAssiete=0;
-		sema=new Semaphore(0);
+		semaClient=new Semaphore(0);
+		semaCuisinier=new Semaphore(0);
+		
 	}
 	
 	public synchronized void deposerAssiete() throws InterruptedException
 	{
 		nbAssiete++;
 		
-		sema.acquire();//block
+		semaCuisinier.release();//debloquer server
 		
+		System.err.println("client"+nbAssiete);
+		semaClient.acquire();
+		
+		//  attendre son assiete
 	}
 	
-	public synchronized void cuire() throws InterruptedException
+	public void cuire() throws InterruptedException
 	{
 		
-		while(nbAssiete<=0)
-		{
-			sema.acquire();
-		}
-
-		nbAssiete--; 
-		sema.release();// liberer un client	
+		semaCuisinier.acquire();//attend client
 		
+		//Thread.sleep(1000); // temps de preparation 
+		nbAssiete--; 
+		
+		System.err.println("cuisine"+nbAssiete);
+		
+		semaClient.release();
+	
 	}
 	
 }
