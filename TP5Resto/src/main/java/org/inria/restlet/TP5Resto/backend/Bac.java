@@ -15,23 +15,18 @@ public class Bac {
 		while(kiloconso > quantite ) {
 			wait();
 		}
-		
 		int temps = 200 + ( (int)Math.random()  * (300-200) );
 		Thread.sleep(temps);
 		quantite= quantite-kiloconso;
-		notifyAll();
-		
-	}
+		//notifyAll();	
+}
  
  public synchronized void remplirBac(int qteAjouter) {
 	 
 	 if(quantite <= 100) {
-		 
 		 quantite = qteAjouter;
-
 		 notifyAll();
 	 }
-	 
  }
  
  public int getQte()

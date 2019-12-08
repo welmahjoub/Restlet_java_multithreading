@@ -8,20 +8,20 @@ public class StandCuisson {
 	private Semaphore semaClient;
 	private Semaphore semaCuisinier;
 	
+	
 	public StandCuisson() {
+		
 		nbAssiete=0;
 		semaClient=new Semaphore(0);
 		semaCuisinier=new Semaphore(0);
-		
 	}
 	
 	public synchronized void deposerAssiete() throws InterruptedException
 	{
-		nbAssiete++;
+		//nbAssiete++;
 		
 		semaCuisinier.release();//debloquer server
-		
-		System.err.println("client"+nbAssiete);
+
 		semaClient.acquire();
 		
 		//  attendre son assiete
@@ -32,10 +32,8 @@ public class StandCuisson {
 		
 		semaCuisinier.acquire();//attend client
 		
-		//Thread.sleep(1000); // temps de preparation 
-		nbAssiete--; 
-		
-		System.err.println("cuisine"+nbAssiete);
+		Thread.sleep(2000); // temps de preparation 
+		//nbAssiete--; 
 		
 		semaClient.release();
 	
