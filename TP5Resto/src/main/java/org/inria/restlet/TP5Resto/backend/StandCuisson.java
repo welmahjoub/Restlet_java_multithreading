@@ -19,10 +19,10 @@ public class StandCuisson {
 	{
 		nbAssiete++;
 		
-		semaCuisinier.release();//debloquer server
+		semaCuisinier.release();//debloquer server => v
 		
 		System.err.println("client"+nbAssiete);
-		semaClient.acquire();
+		semaClient.acquire(); // p sur sema client => wait
 		
 		//  attendre son assiete
 	}
@@ -32,12 +32,12 @@ public class StandCuisson {
 		
 		semaCuisinier.acquire();//attend client
 		
-		//Thread.sleep(1000); // temps de preparation 
+		Thread.sleep(20); // temps de preparation 
 		nbAssiete--; 
 		
 		System.err.println("cuisine"+nbAssiete);
 		
-		semaClient.release();
+		semaClient.release(); // debloque un client
 	
 	}
 	
