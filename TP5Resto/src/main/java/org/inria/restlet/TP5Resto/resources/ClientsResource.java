@@ -44,7 +44,7 @@ public class ClientsResource extends ServerResource
         
         JSONObject userObject = new JSONObject();
         if(client != null) {
-        userObject.put("id", client.getId());
+        userObject.put("id", client.getIdClient());
         userObject.put("etat", client.getEtat());
         }
         
