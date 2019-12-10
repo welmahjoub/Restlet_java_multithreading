@@ -16,3 +16,4 @@ Le serveur doit maintenant tourner, et être prêt à recevoir vos requêtes. Vous p
 
 #### $ curl http://localhost:8124/buffet : //lister la qté restantes dans chaque buffet
 #### $ curl http://localhost:8124/client/2  : //affiche l'état d'un client
+ 
