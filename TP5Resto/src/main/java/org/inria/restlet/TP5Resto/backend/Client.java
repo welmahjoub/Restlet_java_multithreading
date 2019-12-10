@@ -21,7 +21,7 @@ public void run() {
 		Buffet buffet = resto.getBuffet();
 		StandCuisson stand = resto.getStandCuison();
 		
-		int qte_poisson =  0 + ( (int)Math.random()  * (100-0) ); 
+		int qte_poisson =  0 + (int)( Math.random()  * (100-0) ); 
 		int qte_legumes = (int) (Math.random() * 100);
 		int qte_viande = (int) (Math.random() * 100);
 		int qte_nouille = (int) (Math.random() * 100);
